@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<title>Build your dreams</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="./loanApply.js"></script>
+<style>
+    .bg-img {
+        background-color: aliceblue;
+    }
+
+    .container--responsive {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .btn {
+        border-radius: 20px;
+    }
+
+</style>
+
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="onload();" class="bg-img">
+    <nav class="navbar navbar-expand-lg navbar-dark"
+        style="background-image: linear-gradient(to right,#19c2e5, rgba(255,0,0,0)); background-color: #000000;">
+        <img src="./logo.png" style="height: 43px;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active menuCls" id="menuTabId" menuType="MENU">
+                    <a class="nav-link" href="#" ng-click="switchMenu('MENU','menuTabId')">Lone</a>
+                </li>
+                <li class="nav-item menuCls" menuType="BILLING" id="billingTabId">
+                    <a class="nav-link" href="#" ng-click="switchMenu('BILLING','billingTabId')">Status</a>
+                </li>
+            </ul>
+            <span class="navbar-text" style="cursor: pointer;">
+                <i class="fa fa-sign-out text-white" style="font-size: 20px;" ng-click="logout()">Logout</i>
+            </span>
+        </div>
+    </nav>
+    <section class="m-3 loan-section">
+        <div class="container--responsive">
+            <div class="bg-white d-flex" style="border-radius: 20px;">
+                <div class="mb-5">
+                    <div style="padding: 0 0 0 30px;">
+                        <h4 class="heading-title text-info">Loan Against Property</h4>
+                        <p>
+                            Apply for Bank Loan Against Property (LAP) by
+                            pledging residential and/or commercial property for
+                            business or personal needs. Secure a loan amount upto
+                            60% of property value. These funds can be directed
+                            towards expanding business, purchasing new property and
+                            enhancing existing infrastructure. Enjoy comfortable
+                            EMIs at attractive interest rates with a loan tenure of
+                            up to 15 years.
+                        </p>
+                        <button class="btn btn-info" data-toggle="modal" data-target="#placeOrderModalId"
+                            ng-click="loanType('Loan Against Property')">Apply
+                            Now </button>
+                    </div>
+                </div>
+                <div class="m-2">
+                    <img src="./home.jpg" style="height:307px;" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="m-3 loan-section">
+        <div class="container--responsive">
+            <div class="bg-white d-flex" style="border-radius: 20px;">
+                <div class="mb-5">
+                    <div style="padding: 0 0 0 30px;">
+                        <h4 class="heading-title text-info">Car Loan</h4>
+                        <p>
+                            With the advancement of latest technologies, life is changing faster and so do the car
+                            models. New facelift versions and
+                            new variants are launching quite frequently making it difficult to resist the temptation for
+                            upgrading to the car of
+                            latest technology.<br><br>
+                            These new car models complimented with various financing schemes offered by Bank Car
+                            Loans make it easier to
+                            upgrade to the car of your choice with attractive rate of interest.
+                        </p>
+                        <button class="btn btn-info" data-toggle="modal" ng-click="loanType('Car Loan')"
+                            data-target="#placeOrderModalId">Apply
+                            Now</button>
+                    </div>
+                </div>
+                <div class="m-2">
+                    <img src="./car-loan.webp" style="border-radius: 20px;" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="m-3 loan-section">
+        <div class="container--responsive">
+            <div class="bg-white d-flex" style="border-radius: 20px;">
+                <div class="mb-5">
+                    <div style="padding: 0 0 0 30px;">
+                        <h4 class="heading-title text-info">Personal Loan</h4>
+                        <p>
+                            Personal Loan is an unsecured loan that caters to all your financial needs such as travel,
+                            home renovation, applying
+                            online courses, medical emergency or wedding. You can easily apply for Personal Loan, online
+                            up to Rs 50
+                            lakh depending upon your eligibility without any collateral security. With our Personal Loan
+                            EMI calculator, you can
+                            also check the Personal Loan EMI that you are entitled to pay every month. Also, with our
+                            instant Personal Loan online
+                            services, you can get access to the funds within 3 seconds.
+                        </p>
+                        <button class="btn btn-info" data-toggle="modal" data-target="#placeOrderModalId"
+                            ng-click="loanType('Personal Loan')">Apply
+                            Now</button>
+                    </div>
+                </div>
+                <div class="m-2">
+                    <img src="./personalLoan.png.crdownload" style="border-radius: 20px; width: 441px" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="m-3 loan-section">
+        <div class="container--responsive">
+            <div class="bg-white d-flex" style="border-radius: 20px;">
+                <div class="mb-5">
+                    <div style="padding: 0 0 0 30px;">
+                        <h4 class="heading-title text-info">Home Loan</h4>
+                        <p>
+                            Buying a house is a dream for many and involves a lot of
+                            financial planning.Home Loans makes it
+                            simpler for those who want to realise this dream.
+                        </p>
+                        <p>
+                            With our Express Home Loans platform you can now get
+                            digital sanction of your Home Loan at attractive rate of
+                            interest in just few simple steps.
+                        </p>
+                        <button class="btn btn-info" data-toggle="modal" ng-click="loanType('Home Loan')"
+                            data-target="#placeOrderModalId">Apply
+                            Now</button>
+                    </div>
+                </div>
+                <div class="m-2">
+                    <img src="./homeLoan.jpg" style="border-radius: 20px;height: 263px; width: 435px;" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="orderDivId" style="margin: 12px 12px 0 12px;">
+        <!--Apply Modal -->
+        <div class="modal fade" id="placeOrderModalId">
+            <div class="modal-dialog" style="max-width: 906px;">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header bg-info">
+                        <h4 class="modal-title text-white">Apply</h4>
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control" id="userNameId" placeholder="Enter Name"
+                                        value="" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label>Occupation</label>
+                                    <select class="form-control" id="OccupationModel">
+                                        <option value="">Select</option>
+                                        <option value="Salaried">Salaried</option>
+                                        <option value="SelfEmployed">Self Employed</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label>Required Loan Amount</label>
+                                    <input type="number" class="form-control" id="loanAmountId"
+                                        placeholder="Required Loan Amount" value="" required>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label>Email</label>
+                                    <input type="email" class="form-control" id="userEmailId" value=""
+                                        placeholder="Enter Email" required>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label>Contact no.</label>
+                                    <input type="number" class="form-control" id="contactId"
+                                        placeholder="Enter Contact no." required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label>Where do you live currently?</label>
+                                    <textarea type="text" class="form-control" id="location"
+                                        placeholder="Where do you live currently?" value="" required></textarea>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="reset" class="border btn btn-light" data-dismiss="modal">Close</button>
+                        <button type="button" class="border btn btn-info" ng-click="applyLoan()">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 p-0" id="biilingId">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Occupation</th>
+                    <th scope="col">Required Loan Amount</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Loan Type</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="data in viewOrderTableData">
+                    <td scope="col" class="text-black">{{data.userNameId}}</td>
+                    <td scope="col" class="text-black">{{data.OccupationModel}}</td>
+                    <td scope="col" class="text-black">{{data.loanAmountId}}</td>
+                    <td scope="col" class="text-black">{{data.userEmailId}}</td>
+                    <td scope="col" class="text-black">{{data.contactId}}</td>
+                    <td scope="col" class="text-black">{{data.location}}</td>
+                    <td scope="col" class="text-black">{{data.loanType}}</td>
+                    <td scope="col" class="text-black" ng-show="provider != 'true'">{{data.status}}</td>
+                    <td scope="col" class="text-black" ng-show="provider == 'true'">
+                        <select ng-show="data.status == 'pending'" class="form-control"
+                            ng-model="approvalStatus[$index]"
+                            ng-change="loanApprovalStatus(data,approvalStatus[$index])">
+                            <option value="Approved">Approve</option>
+                            <option value="Rejected">Reject</option>
+                        </select>
+                        <!-- <button ng-show="data.status == 'pending'" type="button"
+                            class="border btn-small btn-danger rounded" ng-click="getOrderData(data)"
+                            data-toggle="modal" data-target="#processToPayModalId">update</button> -->
+                        <span ng-show="data.status != 'pending'">{{data.status}}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+
+</html>
